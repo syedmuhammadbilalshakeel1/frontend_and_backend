@@ -7,7 +7,12 @@ module.exports = {
     "./Sectionnew/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Poppins: ["Playfair Display", "serif"],
+        Raleway: ["Raleway", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

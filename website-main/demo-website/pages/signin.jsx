@@ -1,21 +1,192 @@
-import Header from "../section/Header";
-import ServiseToHero from "../section/serviseHero"
-import Footer from "../section/Footer";
-import Sectionmiddlesection from "../section/sectionmiddlesection";
-import SErvisecenteronizecontent from "../section/servisecenteronizecontent";
-import SEctionlast from "../section/sectionlast.jsx";
-function Servises() {
-    return (
-      <>
-        <Header />
-        <ServiseToHero />
-        <br />
-        <Sectionmiddlesection />
-        <SErvisecenteronizecontent />
+import { useState } from "react";
+import { useEffect } from "react";
 
-        <SEctionlast/>
-        <Footer />
-      </>
-    );
+function signin() {
+  const [Email, setEmail] = useState("");
+  const [Pas, setpas] = useState("");
+
+  // You could prevent the page from reloading by using preventDefault method in the event practice.
+
+  // function onLinkClick(e) {
+  //   e.preventDefault();
+  //   alert(Email + "\n" + Pas);
+
+  //   setEmail("");
+  //   setpas("");
+  // }
+
+  //function onLinkClick(e) {
+  //e.preventDefault();
+  //further processing happens here
+  // }
+
+  // const [theme, setTheme] = useState("dark");
+  // const element = document.documentElement;
+  // // console.log(theme, "theme");
+  // const options = [
+  //   {
+  //     icon: "sunny",
+  //     text: "light",
+  //   },
+  //   {
+  //     icon: "moon",
+  //     text: "dark",
+  //   },
+  // ];
+
+  // useEffect(() => {
+  //   switch (theme) {
+  //     case "dark":
+  //       element.classList.add("dark");
+  //       break;
+
+  //     case "light":
+  //       element.classList.remove("dark");
+  //       break;
+
+  //     default:
+  //       break;
+  //   }
+  // }, [theme]);
+
+  return (
+    <>
+      <section className="form h-auto dark:text-gray-100 dark:bg-slate-800 duration-100">
+        <div className="light-mode fixed top-5 right-10 bg-gray-600 rounded">
+          {/* {options?.map((opt) => (
+            <button
+              key={opt.text}
+              // onClick={() => setTheme(opt.text)}
+              className={`w-8 h-8 text-xl rounded-full  ${
+                theme === opt.text && "text-sky-600"
+              }`}
+            >
+              <ion-icon name={opt.icon}></ion-icon>
+            </button>
+          ))} */}
+        </div>
+
+        <div
+          className="logo fixed top-4 h-4"
+          style={{ background: "url('/white.png')" }}
+        ></div>
+
+        <div className="flex">
+          <div className="mx-auto mt-28">
+            <form
+              // onSubmit={onLinkClick}
+              className="space-y-4 w-96 overflow-hidden border-slate-300  h-[82vh] flex flex-col"
+            >
+              <h1 className="text-4xl font-Poppins">Welcome Back to Udemy</h1>
+              <p className="text-slate-500  font-medium font-Raleway dark:text-gray-100">
+                Welcome back please enter your details
+              </p>
+
+              <div className="email">
+                <div>
+                  <label
+                    htmlFor=""
+                    className="text-slate-500 font-Raleway font-medium dark:text-gray-100"
+                  >
+                    Email Address
+                  </label>
+                </div>
+                <div>
+                  <input
+                    name="email"
+                    id="ema"
+                    value={Email}
+                    autoComplete="off"
+                    className="border  border-gray-400 w-full  font-sans rounded text-gray-800 pt-3 pb-3 placeholder:pl-5 dark:bg-slate-600 dark:border-transparent    "
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="password">
+                <div>
+                  <label
+                    htmlFor=""
+                    className="text-slate-500 font-Raleway  font-medium dark:text-gray-100"
+                  >
+                    Password
+                  </label>
+                </div>
+                <div>
+                  <input
+                    type="password"
+                    placeholder="Enter your password"
+                    id="pas"
+                    value={Pas}
+                    name="password"
+                    autoComplete="off"
+                    className="border border-gray-400 
+                                 w-full rounded
+                                 text-gray-800
+                                 pt-3 pb-3
+                                 placeholder:pl-5
+                                 font-sans
+                                  dark:bg-gray-600  
+                                   dark:border-transparent   
+                                 
+                                 "
+                    required
+                    onChange={(e) => {
+                      setpas(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="remember flex  items-center">
+                <div className="pl-2 ">
+                  <input type="checkbox" />
+                  <label
+                    htmlFor=""
+                    className="text-sm pl-2  font-Raleway font-medium  dark:text-gray-600"
+                  >
+                    Remember me
+                  </label>
+                </div>
+
+                <div className="forget text-indigo-700 pl-12">
+                  <a
+                    href=""
+                    className="font-medium text-sm font-Raleway dark:text-gray-600"
+                  >
+                    Forget password
+                  </a>
+                </div>
+              </div>
+              <div>
+                <button
+                  type="sign_in"
+                  className="bg-indigo-600 h-auto hover:drop-shadow-md   dark:bg-gray-600 dark: hover:bg-rose-500  pt-2 pb-2  font-normal text-slate-300 font-Raleway w-1/2 rounded"
+                >
+                  Sign in
+                </button>
+              </div>
+              <h1>
+                Don't have an account?
+                <a href="./signup" className="text-cyan-500">
+                  Signup
+                </a>
+              </h1>
+            </form>
+          </div>
+
+          <div className="img w-96 h-20px  bg-indigo-300 dark:bg-slate-600 md:flex items-center justify-center hidden">
+            <img className="h-[60%] -mt-96 -pt-10" src="./pexels-antoni-shkraba-5306436.jpg" alt="" />
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
-export default Servises
+
+export default signin;
