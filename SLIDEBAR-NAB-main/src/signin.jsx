@@ -6,6 +6,7 @@ import Image from "./pexels-antoni-shkraba-5306436.jpg";
 import { NavLink } from "react-router-dom";
 
 function SignIn() {
+
   //   const [Email, setEmail] = useState("");
   //   const [Pas, setpas] = useState("");
 
