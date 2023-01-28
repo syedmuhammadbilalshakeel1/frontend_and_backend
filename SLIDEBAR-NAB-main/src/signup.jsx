@@ -1,8 +1,9 @@
-import React from 'react'
+import React from "react";
 import { useState } from "react";
 import "./App.css";
 import { useEffect } from "react";
 import Image2 from "./pexels-cottonbro-studio-2773503.jpg";
+import { NavLink } from "react-router-dom";
 
 function SignUp() {
   const [theme, setTheme] = useState("dark");
@@ -69,13 +70,35 @@ function SignUp() {
               //   onSubmit={onLinkClick}
               className="space-y-4 overflow-hidden w-96 border-slate-300 h-[79.6vh] flex flex-col"
             >
-              <h1 className="text-4xl font-Poppins">
-                Welcome Back to the Udemy
-              </h1>
+              <h1 className="text-4xl font-Poppins">Sign up to the Udemy</h1>
+              {/* <h1 className="text-4xl font-Poppins">Sign up</h1> */}
               <p className="text-slate-500  font-medium font-Raleway dark:text-gray-100">
                 Welcome back please enter your details
               </p>
 
+              <div className="email">
+                <div>
+                  <label
+                    htmlFor=""
+                    className="text-slate-500 font-Raleway font-medium dark:text-gray-100"
+                  >
+                  Name
+                  </label>
+                </div>
+                <div>
+                  <input
+                    name="first Name"
+                    id="ema"
+                  
+                    autoComplete="off"
+                    className="border  border-gray-400 w-full  font-sans rounded text-gray-800 pt-3 pb-3 placeholder:pl-5 dark:bg-slate-600 dark:border-transparent    "
+                    type="email"
+                    placeholder="Enter your name"
+                    required
+                   
+                  />
+                </div>
+              </div>
               <div className="email">
                 <div>
                   <label
@@ -159,9 +182,10 @@ function SignUp() {
                   type="sign_in"
                   className="bg-indigo-600 h-auto hover:drop-shadow-md   dark:bg-gray-600 dark: hover:bg-rose-500  pt-2 pb-2  font-normal text-slate-300 font-Raleway w-1/2 rounded"
                 >
-                  Sign in
+                  Sign Up
                 </button>
               </div>
+              <NavLink to="/signin">Already have an account? Login </NavLink>
             </form>
           </div>
 
@@ -176,6 +200,6 @@ function SignUp() {
       </section>
     </>
   );
-};
+}
 
 export default SignUp;

@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import { useEffect } from "react";
 import Image from "./pexels-antoni-shkraba-5306436.jpg";
+import { NavLink } from "react-router-dom";
 
 function SignIn() {
   //   const [Email, setEmail] = useState("");
@@ -166,11 +167,7 @@ function SignIn() {
                   Sign in
                 </button>
               </div>
-              <p>Don't have an account?<a href="">
-              
-                Sign Up
-              </a>
-              </p>
+              <NavLink to="/signup">Don't have an account? Sign up</NavLink>
             </form>
           </div>
 
