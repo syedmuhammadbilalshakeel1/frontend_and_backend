@@ -4,11 +4,57 @@ import "./App.css";
 import { useEffect } from "react";
 import Image2 from "./pexels-cottonbro-studio-2773503.jpg";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 function SignUp() {
+  // axios({
+  //   url: "http://localhost:3000/registration",
+  //   method: "POST",
+  // });
+
+  // const [Name, SetName] = useState("");
+  
+ 
+    // const [Email, setEmail] = useState("");
+    // const [Pas, setpas] = useState("");
+
+     const [emailData, setEmail] = useState();
+     const [passData, setpas] = useState();
+
+   
+    const EMAIL = (e) => {
+    setEmail(e.target.value);
+  };
+const PASSWORD = (e) => {
+  setpas(e.target.value);
+};
+
+const submitForm = async (data) => {
+  data.preventDefault();
+  const obj = {
+    email: emailData,
+    password: passData,
+  };
+  console.log(obj);
+
+  try {
+    await axios({
+      method: "post",
+      url: "http://localhost:3000/register",
+      data: obj,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+ 
+
+
+  
   const [theme, setTheme] = useState("dark");
   const element = document.documentElement;
-  console.log(theme, "theme");
+  // console.log(theme, "theme");
   const options = [
     {
       icon: "sunny",
@@ -19,6 +65,8 @@ function SignUp() {
       text: "dark",
     },
   ];
+
+  // function register() {}
 
   useEffect(() => {
     switch (theme) {
@@ -67,7 +115,7 @@ function SignUp() {
           </div>
           <div className="mx-auto  pt-32">
             <form
-              //   onSubmit={onLinkClick}
+              onSubmit={submitForm}
               className="space-y-4 overflow-hidden w-96 border-slate-300 h-[79.6vh] flex flex-col"
             >
               <h1 className="text-4xl font-Poppins">Sign up to the Udemy</h1>
@@ -82,20 +130,21 @@ function SignUp() {
                     htmlFor=""
                     className="text-slate-500 font-Raleway font-medium dark:text-gray-100"
                   >
-                  Name
+                    Name
                   </label>
                 </div>
                 <div>
                   <input
                     name="first Name"
                     id="ema"
-                  
                     autoComplete="off"
                     className="border  border-gray-400 w-full  font-sans rounded text-gray-800 pt-3 pb-3 placeholder:pl-5 dark:bg-slate-600 dark:border-transparent    "
-                    type="email"
+                    // type="email"
                     placeholder="Enter your name"
-                    required
-                   
+                    // required
+                    // onChange={(e) => {
+                    //   SetName(e.target.value);
+                    // }}
                   />
                 </div>
               </div>
@@ -121,6 +170,7 @@ function SignUp() {
                     // onChange={(e) => {
                     //   setEmail(e.target.value);
                     // }}
+                    onChange={EMAIL}
                   />
                 </div>
               </div>
@@ -153,6 +203,7 @@ function SignUp() {
                                  
                                  "
                     required
+                    onChange={PASSWORD}
                     // onChange={(e) => {
                     //   setpas(e.target.value);
                     // }}

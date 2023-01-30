@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
+const cors = require('cors')
 
 require("dotenv").config();
 
@@ -14,7 +15,7 @@ const auth = require("./auth");
 const server = http.createServer(app);
 
 dbConnect();
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "./public")));
@@ -34,10 +35,12 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/new.html"));
+  console.log(res.sendFile(path.join(__dirname, "./public/new.html")));
 });
 
 app.post("/register", async (request, response) => {
   // hash the password
+
   bcrypt
     .hash(request.body.password, 10)
     .then((hashedPassword) => {
@@ -46,6 +49,7 @@ app.post("/register", async (request, response) => {
         password: hashedPassword,
       });
 
+      console.log(user, "user>>>>");
       user
         .save()
 

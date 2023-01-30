@@ -4,9 +4,20 @@ import "./App.css";
 import { useEffect } from "react";
 import Image from "./pexels-antoni-shkraba-5306436.jpg";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
-function SignIn() {
+// import PropTypes from "prop-types";
 
+// async function SignInUser(credentials) {
+//   return fetch("http://localhost:3000/login", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(credentials),
+//   }).then((data) => data.json());
+// }
+function SignIn({ setToken }) {
   //   const [Email, setEmail] = useState("");
   //   const [Pas, setpas] = useState("");
 
@@ -17,6 +28,36 @@ function SignIn() {
   //     setEmail("");
   //     setpas("");
   //   }
+
+  const [email, setEmailData] = useState();
+  const [pass, setPassData] = useState();
+
+  const EMAIL = (e) => {
+    setEmailData(e.target.value);
+  };
+  const PASSWORD = (e) => {
+    setPassData(e.target.value);
+  };
+
+
+  const submitForm = async (data) => {
+    data.preventDefault();
+    const obj = {
+      email: email,
+      password: pass,
+    };
+    console.log(obj);
+
+    try {
+      await axios({
+        method: "post",
+        url: "http://localhost:3000/login",
+        data: obj,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const [theme, setTheme] = useState("dark");
   const element = document.documentElement;
@@ -73,6 +114,7 @@ function SignIn() {
           <div className="mx-auto  pt-32">
             <form
               //   onSubmit={onLinkClick}
+              onSubmit={submitForm}
               className="space-y-4 overflow-hidden w-96 border-slate-300 h-[79.6vh] flex flex-col"
             >
               <h1 className="text-4xl font-Poppins">
@@ -104,6 +146,7 @@ function SignIn() {
                     // onChange={(e) => {
                     //   setEmail(e.target.value);
                     // }}
+                    onChange={EMAIL}
                   />
                 </div>
               </div>
@@ -139,6 +182,7 @@ function SignIn() {
                     // onChange={(e) => {
                     //   setpas(e.target.value);
                     // }}
+                    onChange={PASSWORD}
                   />
                 </div>
               </div>
