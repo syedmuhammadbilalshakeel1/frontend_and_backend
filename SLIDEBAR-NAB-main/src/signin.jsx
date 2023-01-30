@@ -6,17 +6,7 @@ import Image from "./pexels-antoni-shkraba-5306436.jpg";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
-// import PropTypes from "prop-types";
 
-// async function SignInUser(credentials) {
-//   return fetch("http://localhost:3000/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(credentials),
-//   }).then((data) => data.json());
-// }
 function SignIn({ setToken }) {
   //   const [Email, setEmail] = useState("");
   //   const [Pas, setpas] = useState("");
