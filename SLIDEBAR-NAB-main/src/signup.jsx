@@ -13,45 +13,40 @@ function SignUp() {
   // });
 
   // const [Name, SetName] = useState("");
-  
- 
-    // const [Email, setEmail] = useState("");
-    // const [Pas, setpas] = useState("");
 
-     const [emailData, setEmail] = useState();
-     const [passData, setpas] = useState();
+  // const [Email, setEmail] = useState("");
+  // const [Pas, setpas] = useState("");
 
-   
-    const EMAIL = (e) => {
+  const [emailData, setEmail] = useState();
+  const [passData, setpas] = useState();
+
+  const EMAIL = (e) => {
     setEmail(e.target.value);
   };
-const PASSWORD = (e) => {
-  setpas(e.target.value);
-};
-
-const submitForm = async (data) => {
-  data.preventDefault();
-  const obj = {
-    email: emailData,
-    password: passData,
+  const PASSWORD = (e) => {
+    setpas(e.target.value);
   };
-  console.log(obj);
 
-  try {
-    await axios({
-      method: "post",
-      url: "http://localhost:3000/register",
-      data: obj,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+  const submitForm = async (data) => {
+    data.preventDefault();
+    const obj = {
+      email: emailData,
+      password: passData,
+    };
 
- 
+    try {
+      const response = await axios({
+        method: "post",
+        url: "http://localhost:3000/register",
+        data: obj,
+      });
 
+      console.log("response", response);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
-  
   const [theme, setTheme] = useState("dark");
   const element = document.documentElement;
   // console.log(theme, "theme");

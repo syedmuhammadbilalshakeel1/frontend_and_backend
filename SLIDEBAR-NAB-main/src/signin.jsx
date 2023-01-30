@@ -39,21 +39,20 @@ function SignIn({ setToken }) {
     setPassData(e.target.value);
   };
 
-
   const submitForm = async (data) => {
     data.preventDefault();
     const obj = {
       email: email,
       password: pass,
     };
-    console.log(obj);
 
     try {
-      await axios({
+      const response = await axios({
         method: "post",
         url: "http://localhost:3000/login",
         data: obj,
       });
+      console.log("response", response);
     } catch (error) {
       console.log(error);
     }
