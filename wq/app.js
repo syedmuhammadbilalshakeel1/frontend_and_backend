@@ -5,10 +5,15 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 // const cors = require("cors");
+<<<<<<< Updated upstream
 // jdjdjjsd
 
 // ldld
 // 
+=======
+// newcomekk
+
+>>>>>>> Stashed changes
 
 require("dotenv").config();
 
